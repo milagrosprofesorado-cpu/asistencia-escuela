@@ -32,28 +32,9 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <!-- NOTA: Firebase removido porque usamos Supabase para autenticación.
+         Si necesitás Firebase para otra cosa, agregalo de nuevo con intención explícita. -->
 
-    <script>
-      // Tu configuración de Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyCzgl9U2DLY16pXxvvvcJNeTshCgqfE6Y4",
-        authDomain: "pruebaasistenciapro.firebaseapp.com",
-        projectId: "pruebaasistenciapro",
-        storageBucket: "pruebaasistenciapro.firebasestorage.app",
-        messagingSenderId: "529599664915",
-        appId: "1:529599664915:web:95d12af5b78766901b40e6",
-        measurementId: "G-R0RNZKMLMJ"
-      };
-
-      // Inicializar Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script>
-
-    
     <script>
       // Config de autenticación (editable)
       window.USERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQOIYDnMQQtRVcPNPFnfmvVWiqFFqXjslfLjwq0totnyRFWLmQBfoiHS7rFqx2fnaqQMd7-RswWKOVe/pub?output=csv";
@@ -64,8 +45,11 @@
       window.SUPPORT_EMAIL = "docentxsbrown@gmail.com";
     </script>
 
-    <!-- Tu app -->
+    <!-- Auth: Supabase (debe cargarse antes del script principal de la app) -->
     <script type="module" src="auth_supabase.js"></script>
+
+    <!-- Tu app (archivo principal) -->
+    <script type="module" src="app.js"></script>
 
     <script>
       if ('serviceWorker' in navigator) {
