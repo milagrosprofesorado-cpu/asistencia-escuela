@@ -32,7 +32,7 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
-    <!-- Firebase SDKs (los dejo por compatibilidad si tenés algo que lo use en el futuro) -->
+    <!-- Firebase SDKs (compatibilidad futura, intacto) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
@@ -48,27 +48,28 @@
         appId: "1:529599664915:web:95d12af5b78766901b40e6",
         measurementId: "G-R0RNZKMLMJ"
       };
-      // Inicializar Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
 
     <script>
-      // Config de autenticación (editable)
+      // Config de autenticación local (intacto)
       window.USERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQOIYDnMQQtRVcPNPFnfmvVWiqFFqXjslfLjwq0totnyRFWLmQBfoiHS7rFqx2fnaqQMd7-RswWKOVe/pub?output=csv";
       window.PASSWORD_API_URL = "https://script.google.com/macros/s/AKfycbx7_eYheJlTi3R8m45AyD2qwMXg2GwXMyRfoKNOiYenqYwGbOhzYg9pj0zV8oKBCsS2/exec";
       window.SUPPORT_EMAIL = "docentxsbrown@gmail.com";
     </script>
 
-    <!-- Supabase client (añadido) -->
+    <!-- Supabase client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.4.0/dist/supabase.min.js"></script>
     <script>
-      // Inicializa Supabase con tu proyecto (ya me diste estos valores)
       window.SUPABASE_URL = "https://arwzwdyaukilbsxvsfsl.supabase.co";
       window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFyd3p3ZHlhdWtpbGJzeHZzZnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzMzAwNjMsImV4cCI6MjA3ODkwNjA2M30.0s2D5YBdBqQnTsITB8T797iAmAZrEZrNRrttYmz9c_k";
       window.supabase = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
     </script>
 
-    <!-- Tu app (actualizada con integración Supabase) -->
+    <!-- 🔥 ARCHIVO NECESARIO PARA AppShell → agregado -->
+    <script src="auth_supabase.js"></script>
+
+    <!-- Tu app principal -->
     <script src="app.js"></script>
 
     <script>
@@ -84,6 +85,7 @@
           <li>En Android/Chrome: Menú ⋮ → <em>Agregar a la pantalla principal</em>.</li>
           <li>En iOS/Safari: Compartir → <em>Añadir a inicio</em>.</li>
         </ol>
+
         <div class="mt-8 text-center">
           <a href="https://cafecito.app/docentesbrown" target="_blank" rel="noopener"
              class="inline-block px-5 py-3 rounded-2xl text-white font-semibold shadow"
@@ -91,7 +93,7 @@
             ☕ Bancanos con un cafecito
           </a>
         </div>
-        <!-- Nuevo botón: Exportar / Importar (después del cafecito) -->
+
         <div class="mt-4 text-center">
           <button onclick="window.__openExport()"
                   class="inline-block px-5 py-3 rounded-2xl text-white font-semibold shadow"
