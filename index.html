@@ -32,24 +32,44 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
-    <!-- NOTA: Firebase removido porque usamos Supabase para autenticación.
-         Si necesitás Firebase para otra cosa, agregalo de nuevo con intención explícita. -->
+    <!-- Firebase SDKs (los dejo por compatibilidad si tenés algo que lo use en el futuro) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+    <script>
+      // Tu configuración de Firebase (sin cambios)
+      const firebaseConfig = {
+        apiKey: "AIzaSyCzgl9U2DLY16pXxvvvcJNeTshCgqfE6Y4",
+        authDomain: "pruebaasistenciapro.firebaseapp.com",
+        projectId: "pruebaasistenciapro",
+        storageBucket: "pruebaasistenciapro.firebasestorage.app",
+        messagingSenderId: "529599664915",
+        appId: "1:529599664915:web:95d12af5b78766901b40e6",
+        measurementId: "G-R0RNZKMLMJ"
+      };
+      // Inicializar Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
 
     <script>
       // Config de autenticación (editable)
       window.USERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQOIYDnMQQtRVcPNPFnfmvVWiqFFqXjslfLjwq0totnyRFWLmQBfoiHS7rFqx2fnaqQMd7-RswWKOVe/pub?output=csv";
-      // Si luego creás un Web App de Apps Script para modificar/recuperar contraseñas,
-      // poné la URL acá. Si está vacío, se usa el modo "mailto" al admin.
       window.PASSWORD_API_URL = "https://script.google.com/macros/s/AKfycbx7_eYheJlTi3R8m45AyD2qwMXg2GwXMyRfoKNOiYenqYwGbOhzYg9pj0zV8oKBCsS2/exec";
-      // Email del admin para pedidos de recuperación (usado en modo mailto)
       window.SUPPORT_EMAIL = "docentxsbrown@gmail.com";
     </script>
 
-    <!-- Auth: Supabase (debe cargarse antes del script principal de la app) -->
-    <script type="module" src="auth_supabase.js"></script>
+    <!-- Supabase client (añadido) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.4.0/dist/supabase.min.js"></script>
+    <script>
+      // Inicializa Supabase con tu proyecto (ya me diste estos valores)
+      window.SUPABASE_URL = "https://arwzwdyaukilbsxvsfsl.supabase.co";
+      window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFyd3p3ZHlhdWtpbGJzeHZzZnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzMzAwNjMsImV4cCI6MjA3ODkwNjA2M30.0s2D5YBdBqQnTsITB8T797iAmAZrEZrNRrttYmz9c_k";
+      window.supabase = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    </script>
 
-    <!-- Tu app (archivo principal) -->
-    <script type="module" src="app.js"></script>
+    <!-- Tu app (actualizada con integración Supabase) -->
+    <script src="app.js"></script>
 
     <script>
       if ('serviceWorker' in navigator) {
